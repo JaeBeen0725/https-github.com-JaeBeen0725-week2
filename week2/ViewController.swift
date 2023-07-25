@@ -7,104 +7,153 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+enum Mood: Int {
+    case exciting
+    case happy
+    case soso
+    case sad
+    case bad
+    
+    var name: String {
+        switch self {
+        case .exciting:
+            return "exciting"
+        case .happy:
+            return "happy"
+        case .soso:
+            return "soso"
+        case .sad:
+            return "sad"
+        case .bad:
+            return "bad"
+        }
+        
+    }
+}
 
+
+class ViewController: UIViewController {
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "What the"
-       
+        
         
     }
-//    enum Mood: String {
-//        case exciting = "exciting"
-//        case happy = "happy"
-//        case soso = "soso"
-//        case sad = "sad"
-//        case bad = "bad"
-//    }
+    //    enum Mood: String {
+    //        case exciting = "exciting"
+    //        case happy = "happy"
+    //        case soso = "soso"
+    //        case sad = "sad"
+    //        case bad = "bad"
+    //    }
     
-    enum Mood: Int {
-    case exciting
-    case happy
-    case soso
-    case sad
-    case bad
-}
-   var excitingCount = 0
-    var happyCount = 0
-    var sosoCount = 0
-    var sadCount = 0
-    var badCount = 0
-
-    @IBAction func buttonTapped(_ sender: UIButton) {
-     
-        var a = sender.tag
-         
-        switch a {
-        case 0 :
-            excitingCount += 1
-            print("\(Mood(rawValue: 0)!): \(excitingCount)")
-        case 1:
-            happyCount += 1
-            print("\(Mood(rawValue: 1)!): \(happyCount)")
-        case 2:
-            sosoCount += 1
-            print("\(Mood(rawValue: 2)!): \(sosoCount)")
-        case 3:
-            sadCount += 1
-            print("\(Mood(rawValue: 3)!): \(sadCount)")
-        case 4:
-            badCount += 1
-            print("\(Mood(rawValue: 4)!): \(badCount)")
-        default :
+    
+    
+    
+    
+    @IBAction func moodButtonTapped(_ sender: UIButton) {
+        
+        
+        guard let text = Mood(rawValue: sender.tag), let value = Mood(rawValue: sender.tag) else {
             print("오류")
-
+            return
         }
         
-        
-        
+        switch value {
+        case .exciting :
+            let count = UserDefaults.standard.integer(forKey: Mood.exciting.name)
+            let num = count + 1
+            UserDefaults.standard.set(num, forKey: Mood.exciting.name)
+            print("\(text): \(UserDefaults.standard.integer(forKey: Mood.exciting.name))")
+        case .happy :
+            let count = UserDefaults.standard.integer(forKey: Mood.happy.name)
+            let num = count + 1
+            UserDefaults.standard.set(num, forKey: Mood.happy.name)
+            print("\(text): \(UserDefaults.standard.integer(forKey: Mood.happy.name))")
+        case .soso :
+            let count = UserDefaults.standard.integer(forKey: Mood.soso.name)
+            let num = count + 1
+            UserDefaults.standard.set(num, forKey: Mood.soso.name)
+            print("\(text): \(UserDefaults.standard.integer(forKey: Mood.soso.name))")
+        case .sad :
+            let count = UserDefaults.standard.integer(forKey: Mood.sad.name)
+            let num = count + 1
+            UserDefaults.standard.set(num, forKey: Mood.sad.name)
+            print("\(text): \(UserDefaults.standard.integer(forKey: Mood.sad.name))")
+        case .bad:
+            let count = UserDefaults.standard.integer(forKey: Mood.bad.name)
+            let num = count + 1
+            UserDefaults.standard.set(num, forKey: Mood.bad.name)
+            print("\(text): \(UserDefaults.standard.integer(forKey: Mood.bad.name))")
         }
-        /*
-        if sender.tag == 0 {
-            
-            a += 1
-                    print(a)
-                }
-                else if sender.tag == 1 {
-                
-                    b += 1
-                            print(b)
-                }
-                else if sender.tag == 2 {
-                 
-                    c += 1
-                            print(c)
-                }else if sender.tag == 3{
-                    
-                    d += 1
-                            print(d)
-                }else if sender.tag == 4 {
-                  
-                    q += 1
-                            print(q)
-                }
         
-        */
     }
     
-        
-        
-       
-    
-    
+    /*
+     var button:Int = sender.tag
+     
+     switch button {
+     case 0 :
+     
+     print("\(Mood(rawValue: 0)!)")
+     case 1:
+     
+     print("\(Mood(rawValue: 1)!)")
+     case 2:
+     
+     print("\(Mood(rawValue: 2)!)")
+     case 3:
+     
+     print("\(Mood(rawValue: 3)!)")
+     case 4:
+     
+     print("\(Mood(rawValue: 4)!)")
+     default :
+     print("오류")
+     
+     }
+     */
+}
+/*
+ if sender.tag == 0 {
  
+ a += 1
+ print(a)
+ }
+ else if sender.tag == 1 {
+ 
+ b += 1
+ print(b)
+ }
+ else if sender.tag == 2 {
+ 
+ c += 1
+ print(c)
+ }else if sender.tag == 3{
+ 
+ d += 1
+ print(d)
+ }else if sender.tag == 4 {
+ 
+ q += 1
+ print(q)
+ }
+ 
+ */
 
-  
-    
-   
-    
+
+
+
+
+
+
+
+
+
+
+
 
 
