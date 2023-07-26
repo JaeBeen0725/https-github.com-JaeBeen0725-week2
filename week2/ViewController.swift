@@ -30,8 +30,6 @@ enum Mood: Int {
         
     }
 }
-
-
 class ViewController: UIViewController {
     
     
